@@ -87,8 +87,6 @@ apps=(
     "spotify"
     "discord"
     "box-drive"
-    "box-sync"
-    "box-tools"
     "google-drive"
     "dropbox"
     "gimp"
@@ -106,6 +104,10 @@ apps=(
     "zoom"
     
 )
+
+# Pruned Apps
+#    "box-sync"
+#    "box-tools"
 
 # Old array of applications to install using Homebrew Cask. 
 # apps=(
