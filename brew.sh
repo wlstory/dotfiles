@@ -40,6 +40,7 @@ packages=(
     "mas"
     "gh"
     "dashlane/tap/dashlane-cli"
+    "rbenv ruby-build"
 )
 
 # Loop over the array to install each application.
