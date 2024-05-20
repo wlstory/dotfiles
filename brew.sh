@@ -138,6 +138,7 @@ done
 
 # Install Source Code Pro Font
 # Tap the Homebrew font cask repository if not already tapped
+# *** This tap is deprecated. Find replacement. ***
 brew tap | grep -q "^homebrew/cask-fonts$" || brew tap homebrew/cask-fonts
 
 # Define the font name
