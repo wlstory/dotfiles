@@ -16,6 +16,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && kill
 # - Set Dock to Hide and Show with animation
 # - Check for OS Updates FIRST before any installations
 # - Learn and apply the Logitech Optiions Plus feature flags
+# - Check on ability to set/install Chrome browser extensions
+# - Establishing settings on Notifications
 
 # Get the absolute path to the image
 # *** REPLACE WITH MY IDEAL DESKTOP IMAGE ***
