@@ -90,7 +90,6 @@ apps=(
     "box-sync"
     "box-tools"
     "google-drive"
-    "onedrive"
     "dropbox"
     "gimp"
     "rectangle"
