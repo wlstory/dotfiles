@@ -18,6 +18,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && kill
 # - Learn and apply the Logitech Optiions Plus feature flags
 # - Check on ability to set/install Chrome browser extensions
 # - Establishing settings on Notifications
+# - Logitech Mouse settings? 
 
 # Get the absolute path to the image
 # *** REPLACE WITH MY IDEAL DESKTOP IMAGE ***
