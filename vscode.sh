@@ -16,8 +16,31 @@ extensions=(
     teabyii.ayu
     formulahendry.code-runner
     esbenp.prettier-vscode
-    znck.grammarly
 )
+
+# Ruby Extensions
+#    ruby
+#    endwise
+#    rufo
+#    Rails DB Schema
+#    Rails Routes Navigator
+#    Ruby and Rails Snippets
+#    Ruby on Rails
+#    Ruby Test Explorer
+#    ruby-rubocop
+
+# Install VS Code Extensions
+# extensions=(
+#    ms-python.python
+#    ms-python.pylint
+#    ms-python.vscode-pylance
+#    ms-python.debugpy
+#    GitHub.copilot
+#    ms-vscode.Theme-PredawnKit
+#    teabyii.ayu
+#    formulahendry.code-runner
+#    esbenp.prettier-vscode
+# )
 
 # Get a list of all currently installed extensions.
 installed_extensions=$(code --list-extensions)
