@@ -16,6 +16,7 @@ extensions=(
     teabyii.ayu
     formulahendry.code-runner
     esbenp.prettier-vscode
+    ruby-lsp
 )
 
 # Ruby Extensions
