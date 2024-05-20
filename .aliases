@@ -5,7 +5,7 @@ alias hg='history | grep'
 # Saving script aliases from original for future reference. 
 # alias yt="subl '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
 # alias cyt="cd '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
-#alias oyt="open '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
+# alias oyt="open '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
 
 # Detect which `ls` flavor is in use
 if ls --color >/dev/null 2>&1; then # GNU `ls`
