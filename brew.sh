@@ -152,21 +152,21 @@ else
 fi
 
 # Define array for Apple Store Installs
-# app_store=(
-#    "517914548" # Dashlane
-#    "302584613" # Amazon Kindle Reader
-#    "1278508951" # Trello
-# )
+app_store=(
+    "517914548" # Dashlane
+    "302584613" # Amazon Kindle Reader
+    "1278508951" # Trello
+)
 # Mac Apple Store Installs
 # Loop over the array to install each application from Apple Store.
-# for app in "${app_store[@]}"; do
-#    if mas list | grep -q "^$app\$"; then
-#        echo "$app is already installed. Skipping..."
-#    else
-#        echo "Installing $app..."
-#        mas install "$app"
-#    fi
-# done
+for app in "${app_store[@]}"; do
+    if mas list | grep -q "^$app\$"; then
+        echo "$app is already installed. Skipping..."
+    else
+        echo "Installing $app..."
+        mas install "$app"
+    fi
+ done
 
 # Once font is installed, Import your Terminal Profile
 echo "Import your terminal settings..."
