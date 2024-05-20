@@ -1,9 +1,11 @@
 # Shortcuts
 alias ch='history | grep "git commit"'
 alias hg='history | grep'
-alias yt="subl '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
-alias cyt="cd '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
-alias oyt="open '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
+
+# Saving script aliases from original for future reference. 
+# alias yt="subl '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
+# alias cyt="cd '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
+#alias oyt="open '$HOME/Google Drive/My Drive/YouTube/Scripts/'"
 
 # Detect which `ls` flavor is in use
 if ls --color >/dev/null 2>&1; then # GNU `ls`
@@ -39,7 +41,7 @@ alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && kill
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # To prep before screencasts
-alias tut_mode='defaults write com.apple.dock autohide -bool true && killall Dock;
+alias screenshare_mode='defaults write com.apple.dock autohide -bool true && killall Dock;
                defaults write com.apple.finder CreateDesktop -bool false && killall Finder;
                defaults write com.apple.menuextra.clock IsAnalog -bool true && killall SystemUIServer;
                rm -rf ~/.Trash/*;
@@ -48,8 +50,10 @@ alias reg_mode='defaults write com.apple.dock autohide -bool false && killall Do
                defaults write com.apple.finder CreateDesktop -bool true && killall Finder;
                defaults write com.apple.menuextra.clock IsAnalog -bool false && killall SystemUIServer;'
 
+# Clean permanently deletes Trash and Downloads folders
 alias clean='rm -rf ~/.Trash/*; rm -rf ~/Downloads/*'
 
 # Virtual Environments
-alias wipe_env='rm -rf ~/venvs/tutorial; python3 -m venv ~/venvs/tutorial'
-alias tut_env='source ~/venvs/tutorial/bin/activate'
+# Not needed for me... 
+# alias wipe_env='rm -rf ~/venvs/tutorial; python3 -m venv ~/venvs/tutorial'
+# alias tut_env='source ~/venvs/tutorial/bin/activate'
