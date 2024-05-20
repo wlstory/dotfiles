@@ -5,9 +5,9 @@
   "debug.console.fontFamily": "Source Code Pro",
   "editor.fontWeight": "500",
   "terminal.integrated.fontWeight": "600",
-  "editor.fontSize": 16, //Use 22 for Screen Recordings
-  "debug.console.fontSize": 16, //Use 22 for Screen Recordings
-  "terminal.integrated.fontSize": 16, //Use 22 for Screen Recordings
+  "editor.fontSize": 12, //Use 22 for Screen Recordings
+  "debug.console.fontSize": 12, //Use 22 for Screen Recordings
+  "terminal.integrated.fontSize": 12, //Use 22 for Screen Recordings
   "window.zoomLevel": 0, // Use 2 for Screen Recordings
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
