@@ -103,9 +103,7 @@ apps=(
     "sonos"
     "nordvpn"
     "engine-dj"
-    "slack"
     "zoom"
-    "obs"
     
 )
 
