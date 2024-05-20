@@ -14,6 +14,7 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && kill
 # - Set HotCorners
 # - Set-up the Dock app order and icons on the Dock to include Applications
 # - Set Dock to Hide and Show with animation
+# - Check for OS Updates FIRST before any installations
 
 # Get the absolute path to the image
 # *** REPLACE WITH MY IDEAL DESKTOP IMAGE ***
