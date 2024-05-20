@@ -37,6 +37,9 @@ packages=(
     "pylint"
     "black"
     "node"
+    "mas"
+    "gh"
+    "dashlane/tap/dashlane-cli"
 )
 
 # Loop over the array to install each application.
@@ -78,17 +81,51 @@ apps=(
     "google-chrome"
     "firefox"
     "brave-browser"
+    "duckduckgo"
     "sublime-text"
     "visual-studio-code"
-    "virtualbox"
     "spotify"
     "discord"
+    "box-drive"
+    "box-sync"
+    "box-tools"
     "google-drive"
+    "onedrive"
+    "dropbox"
     "gimp"
-    "vlc"
     "rectangle"
     "postman"
+    "microsoft-teams"
+    "microsoft-office"
+    "adobe-acrobat-reader"
+    "evernote"
+    "github"
+    "logi-options-plus"
+    "sonos"
+    "nordvpn"
+    "engine-dj"
+    "slack"
+    "zoom"
+    "obs"
+    
 )
+
+# Old array of applications to install using Homebrew Cask. 
+# apps=(
+#    "google-chrome"
+#    "firefox"
+#    "brave-browser"
+#    "sublime-text"
+#    "visual-studio-code"
+#    "virtualbox"
+#    "spotify"
+#    "discord"
+#    "google-drive"
+#    "gimp"
+#    "vlc"
+#    "rectangle"
+#    "postman"
+# )
 
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
@@ -115,6 +152,23 @@ else
     brew install --cask "$font_name"
 fi
 
+# Define array for Apple Store Installs
+# app_store=(
+#    "517914548" # Dashlane
+#    "302584613" # Amazon Kindle Reader
+#    "1278508951" # Trello
+# )
+# Mac Apple Store Installs
+# Loop over the array to install each application from Apple Store.
+# for app in "${app_store[@]}"; do
+#    if mas list | grep -q "^$app\$"; then
+#        echo "$app is already installed. Skipping..."
+#    else
+#        echo "Installing $app..."
+#        mas install "$app"
+#    fi
+# done
+
 # Once font is installed, Import your Terminal Profile
 echo "Import your terminal settings..."
 echo "Terminal -> Settings -> Profiles -> Import..."
@@ -128,17 +182,41 @@ brew upgrade
 brew upgrade --cask
 brew cleanup
 
+echo "Sign in to Dashlane (in both Safari and Chrome). Press enter to continue..."
+read
+
+echo "Sign in to Logitech Options Plus. Press enter to continue..."
+read
+
 echo "Sign in to Google Chrome. Press enter to continue..."
+read
+
+echo "Sign in to Box-Drive. Press enter to continue..."
+read
+
+echo "Sign in to Dropbox. Press enter to continue..."
 read
 
 echo "Sign in to Spotify. Press enter to continue..."
 read
 
+echo "Sign in to Evernote. Press enter to continue..."
+read
+
 echo "Sign in to Discord. Press enter to continue..."
+read
+
+echo "Sign in to Microsoft Office. Press enter to continue..."
+read
+
+echo "Sign in to Sonos. Press enter to continue..."
 read
 
 echo "Open Rectangle and give it necessary permissions. Press enter to continue..."
 read
 
 echo "Import your Rectangle settings located in ~/dotfiles/settings/RectangleConfig.json. Press enter to continue..."
+read
+
+echo "Sign in to NordVPN. Press enter to continue..."
 read
