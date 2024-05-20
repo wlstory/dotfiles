@@ -7,8 +7,8 @@
 # And also sets up Sublime Text
 ############################
 
-# dotfiles directory *** Remember to update if folder version # updates. 
-dotfiledir="${HOME}/dotfiles-v1"
+# dotfiles directory 
+dotfiledir="${HOME}/dotfiles"
 
 # list of files/folders to symlink in ${homedir}
 files=(zshrc zprofile zprompt bashrc bash_profile bash_prompt aliases private)
