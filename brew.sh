@@ -91,7 +91,6 @@ apps=(
     "google-drive"
     "dropbox"
     "gimp"
-    "rectangle"
     "postman"
     "microsoft-teams"
     "microsoft-office"
