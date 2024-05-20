@@ -9,6 +9,10 @@ read
 # Set scroll as traditional instead of natural
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false && killall Finder
 
+# THINGS TO DO
+# - Turn off password saving and auto-fill in browsers (Chrome, Safari, Brave, DuckDuckGo)
+# - Set HotCorners
+
 # Get the absolute path to the image
 # *** REPLACE WITH MY IDEAL DESKTOP IMAGE ***
 #IMAGE_PATH="${HOME}/dotfiles/settings/Desktop.png"
