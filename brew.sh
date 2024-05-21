@@ -40,15 +40,25 @@ packages=(
     "mas"
     "gh"
     "dashlane/tap/dashlane-cli"
-    "rbenv ruby-build"
+    "ruby-install"
+    "chruby"
+    "starship"
+    "obsidian"
+    "whatsapp"
+    "fantastical"
+    "tree"
+    "raspberry-pi-imager"
+    "grammarly-desktop"
+    "little-snitch"
 )
 
+echo "🍺 Installing Homebrew Packages"
 # Loop over the array to install each application.
 for package in "${packages[@]}"; do
     if brew list --formula | grep -q "^$package\$"; then
-        echo "$package is already installed. Skipping..."
+        echo "✅ $package is already installed. Skipping..."
     else
-        echo "Installing $package..."
+        echo "Installing $package...*********************************"
         brew install "$package"
     fi
 done
