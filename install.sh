@@ -7,6 +7,9 @@
 # And also sets up Sublime Text
 ############################
 
+############################
+
+
 # dotfiles directory 
 dotfiledir="${HOME}/dotfiles"
 
