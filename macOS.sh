@@ -6,8 +6,8 @@ echo "Complete the installation of Xcode Command Line Tools before proceeding."
 echo "Press enter to continue..."
 read
 
-# Set scroll as natural vs traditional
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true && killall Finder
+# Set scroll as natural vs traditional - check if commenting reverts
+# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true && killall Finder
 
 # THINGS TO DO:
 # - Turn off password saving and auto-fill in browsers (Chrome, Safari, Brave, DuckDuckGo)
