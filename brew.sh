@@ -45,6 +45,7 @@ packages=(
     "node"
     "mas"
     "gh"
+    "shellcheck"
     "dashlane/tap/dashlane-cli"
     "ruby-install"
     "chruby"
@@ -120,15 +121,12 @@ apps=(
     "logi-options-plus"
     "sonos"
     "nordvpn"
+    "elgato-stream-deck"
     "engine-dj"
     "chatgpt"
     "zoom"
     
 )
-
-# Pruned Apps
-#    "box-tools"
-
 
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
