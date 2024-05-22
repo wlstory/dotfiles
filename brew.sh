@@ -82,10 +82,11 @@ read git_user_email
 $(brew --prefix)/bin/git config --global user.name "$git_user_name"
 $(brew --prefix)/bin/git config --global user.email "$git_user_email"
 
+# Remove this section eventually... Not needed. 
 # Create the tutorial virtual environment I use frequently
-$(brew --prefix)/bin/python3 -m venv "${HOME}/tutorial"
+# $(brew --prefix)/bin/python3 -m venv "${HOME}/tutorial"
 
-# Install Prettier, which I use in both VS Code and Sublime Text
+# Install Prettier - used in both VS Code and Sublime Text
 $(brew --prefix)/bin/npm install --global prettier
 
 # Define an array of applications to install using Homebrew Cask.
@@ -100,6 +101,7 @@ apps=(
     "spotify"
     "discord"
     "box-drive"
+    "box-sync"
     "google-drive"
     "dropbox"
     "gimp"
@@ -113,30 +115,14 @@ apps=(
     "sonos"
     "nordvpn"
     "engine-dj"
+    "chatgpt"
     "zoom"
     
 )
 
 # Pruned Apps
-#    "box-sync"
 #    "box-tools"
 
-# Old array of applications to install using Homebrew Cask. 
-# apps=(
-#    "google-chrome"
-#    "firefox"
-#    "brave-browser"
-#    "sublime-text"
-#    "visual-studio-code"
-#    "virtualbox"
-#    "spotify"
-#    "discord"
-#    "google-drive"
-#    "gimp"
-#    "vlc"
-#    "rectangle"
-#    "postman"
-# )
 
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
@@ -151,7 +137,10 @@ done
 # Install Source Code Pro Font
 # Tap the Homebrew font cask repository if not already tapped
 # *** This tap is deprecated. Find replacement. ***
+# *** Turn this into an array and implement in loop
 brew tap | grep -q "^homebrew/cask-fonts$" || brew tap homebrew/cask-fonts
+brew install --cask font-jetbrains-mono
+brew install --cask font-fira-code
 
 # Define the font name
 font_name="font-source-code-pro"
@@ -188,7 +177,15 @@ echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
 # Define array for Dock updates
 dock_apps=(
 	"Fantastical.app"
-    "Evernote.app"
+	"Evernote.app"
+ 	"Google Chrome.app"
+  	"Microsoft Edge.app"
+   	"Microsoft Excel.app"
+    	"Microsoft PowerPoint.app"
+     	"Microsoft Word.app"
+     	"Microsoft Teams.app"
+      	"Visual Studio Code.app"
+       	"Spotify.app"
 )
 
 # Add applications to dock
@@ -201,7 +198,24 @@ for appname in "${dock_apps[@]}"; do
     defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/${appname}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
   fi
 done
-echo ">>>>>>>>>>>>>>>>>>>---- Apps adds to Dock completed."
+echo ">>>>>>>>>>>>>>>>>>>---- Dock updated."
+
+# Programming Languages
+echo ""
+echo "🧑‍💻 Installing Programming Languages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+if command -v rustc > /dev/null; then
+  echo "🦀 rust already installed"
+else
+  /bin/bash -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- --no-modify-path
+fi
+
+if [[ -d "$HOME/.rubies" ]]; then
+  echo "💎 Ruby already installed"
+else
+  ruby-install --update
+  ruby-install --cleanup ruby
+fi
+echo ">>>>>>>>>>>>>>>>>>>---- Programming Languages installed."
 
 # Once font is installed, Import your Terminal Profile
 echo "Import your terminal settings..."
