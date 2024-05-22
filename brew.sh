@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# GitHub References
+# Forked source
+# https://github.com/packetmonkey/dotfiles/blob/313d4cef9ff3dbc70ca897442a16a9c503da13ee/Bin/setup-new-mac
+# https://github.com/thoughtbot/rcm
+# ...
+
 # Install Homebrew if it isn't already installed
 if ! command -v brew &>/dev/null; then
     echo "Homebrew not installed. Installing Homebrew."
