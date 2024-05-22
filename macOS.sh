@@ -32,4 +32,13 @@ read
 #defaults write com.apple.dock wvous-bl-corner -int 4 # Bottom Left  - Desktop
 #defaults write com.apple.dock wvous-br-corner -int 0 # Bottom Right - No option
 
+# Safari Preferences
+#echo "🦁  Safari Settings"
+#defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true # Show full website address
+#defaults write com.apple.Safari IncludeDevelopMenu -bool true            # Show Develop menu in menu bar
+#defaults write com.apple.Safari AutoFillPasswords -bool false            # Disable saving passwords (I use 1Password)
+#defaults write com.apple.Safari AutoFillCreditCardData -bool false       # Disable auto filling Credit Cards
+
+
+
 EOF
