@@ -23,4 +23,13 @@ read
 #        end tell
 #    end repeat
 #end tell
+
+
+# Hot Corners - https://dev.to/darrinndeal/setting-mac-hot-corners-in-the-terminal-3de
+#echo "♨️  Hot Corners"
+#defaults write com.apple.dock wvous-tl-corner -int 5 # Top Right    - Start Screen Saver
+#defaults write com.apple.dock wvous-tr-corner -int 2 # Top Right    - Mission Control
+#defaults write com.apple.dock wvous-bl-corner -int 4 # Bottom Left  - Desktop
+#defaults write com.apple.dock wvous-br-corner -int 0 # Bottom Right - No option
+
 EOF
