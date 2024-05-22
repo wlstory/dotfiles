@@ -163,7 +163,6 @@ fi
 app_store=(
     "517914548" # Dashlane
     "302584613" # Amazon Kindle Reader
-    "1278508951" # Trello
     "1462114288" # Grammarly Safari
 )
 # Mac App Store Installs
