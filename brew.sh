@@ -274,3 +274,6 @@ read
 
 echo "Sign in to NordVPN. Press enter to continue..."
 read
+
+# Adding items to the doc and setting hot corners requires a Dock restart
+killall Dock
