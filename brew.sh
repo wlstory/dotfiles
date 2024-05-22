@@ -8,11 +8,11 @@ if ! command -v brew &>/dev/null; then
     # Attempt to set up Homebrew PATH automatically for this session
     if [ -x "/opt/homebrew/bin/brew" ]; then
         # For Apple Silicon Macs
-        echo "Configuring Homebrew in PATH for Apple Silicon Mac..."
+        echo "✅ Configuring Homebrew in PATH for Apple Silicon Mac..."
         export PATH="/opt/homebrew/bin:$PATH"
     fi
 else
-    echo "Homebrew is already installed."
+    echo "✅ Homebrew is already installed."
 fi
 
 # Verify brew is now accessible
@@ -52,16 +52,17 @@ packages=(
     "little-snitch"
 )
 
-echo "🍺 Installing Homebrew Packages"
+echo "🍺 Installing Homebrew Packages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 # Loop over the array to install each application.
 for package in "${packages[@]}"; do
     if brew list --formula | grep -q "^$package\$"; then
         echo "✅ $package is already installed. Skipping..."
     else
-        echo "Installing $package...*********************************"
+        echo "Installing $package..."
         brew install "$package"
     fi
 done
+echo ">>>>>>>>>>>>>>>>>>>---- Homebrew Packages Completed"
 
 # Add the Homebrew zsh to allowed shells
 echo "Changing default shell to Homebrew zsh"
@@ -140,7 +141,7 @@ apps=(
 # Loop over the array to install each application.
 for app in "${apps[@]}"; do
     if brew list --cask | grep -q "^$app\$"; then
-        echo "$app is already installed. Skipping..."
+        echo "✅ $app is already installed. Skipping..."
     else
         echo "Installing $app..."
         brew install --cask "$app"
@@ -157,7 +158,7 @@ font_name="font-source-code-pro"
 
 # Check if the font is already installed
 if brew list --cask | grep -q "^$font_name\$"; then
-    echo "$font_name is already installed. Skipping..."
+    echo "✅ $font_name is already installed. Skipping..."
 else
     echo "Installing $font_name..."
     brew install --cask "$font_name"
@@ -168,17 +169,39 @@ app_store=(
     "517914548" # Dashlane
     "302584613" # Amazon Kindle Reader
     "1278508951" # Trello
+    "1462114288" # Grammarly Safari
 )
-# Mac Apple Store Installs
+# Mac App Store Installs
+echo "Installing Mac App Store apps ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 # Loop over the array to install each application from Apple Store.
 for app in "${app_store[@]}"; do
     if mas list | grep -q "^$app\$"; then
-        echo "$app is already installed. Skipping..."
+        echo "✅ $app is already installed. Skipping..."
     else
         echo "Installing $app..."
         mas install "$app"
     fi
  done
+
+echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
+
+# Define array for Dock updates
+dock_apps=(
+	"Fantastical.app"
+    "Evernote.app"
+)
+
+# Add applications to dock
+echo ""
+echo "🖥️ Adding applications to the dock ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+for appname in "${dock_apps[@]}"; do
+  if defaults read com.apple.dock persistent-apps | grep -q "${appname}"; then
+    echo "📲 ${appname} already on the dock"
+  else
+    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/${appname}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+  fi
+done
+echo ">>>>>>>>>>>>>>>>>>>---- Apps adds to Dock completed."
 
 # Once font is installed, Import your Terminal Profile
 echo "Import your terminal settings..."
