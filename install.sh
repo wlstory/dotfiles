@@ -47,4 +47,7 @@ done
 # Run the Sublime Script
 ./sublime.sh
 
+# Run the baseline config script
+#./baseline_prefs.sh
+
 echo "Installation Complete!"
