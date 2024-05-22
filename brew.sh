@@ -179,31 +179,32 @@ for app in "${app_store[@]}"; do
 
 echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
 
+# Code needs to be moved to after the install.sh file executes or near the end. Works in test.sh. 
 # Define array for Dock updates
-dock_apps=(
-	"Fantastical.app"
-	"Evernote.app"
- 	"Google Chrome.app"
-  	"Microsoft Edge.app"
-   	"Microsoft Excel.app"
-    	"Microsoft PowerPoint.app"
-     	"Microsoft Word.app"
-     	"Microsoft Teams.app"
-      	"Visual Studio Code.app"
-       	"Spotify.app"
-)
+#dock_apps=(
+#	"Fantastical.app"
+#	"Evernote.app"
+# 	"Google Chrome.app"
+#  	"Microsoft Edge.app"
+#   	"Microsoft Excel.app"
+#    	"Microsoft PowerPoint.app"
+#     	"Microsoft Word.app"
+#     	"Microsoft Teams.app"
+#      	"Visual Studio Code.app"
+#       	"Spotify.app"
+#)
 
 # Add applications to dock
-echo ""
-echo "🖥️ Adding applications to the dock ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-for appname in "${dock_apps[@]}"; do
-  if defaults read com.apple.dock persistent-apps | grep -q "${appname}"; then
-    echo "📲 ${appname} already on the dock"
-  else
-    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/${appname}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-  fi
-done
-echo ">>>>>>>>>>>>>>>>>>>---- Dock updated."
+#echo ""
+#echo "🖥️ Adding applications to the dock ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+#for appname in "${dock_apps[@]}"; do
+#  if defaults read com.apple.dock persistent-apps | grep -q "${appname}"; then
+#    echo "📲 ${appname} already on the dock"
+#  else
+#    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/${appname}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+#  fi
+#done
+#echo ">>>>>>>>>>>>>>>>>>>---- Dock updated."
 
 # Programming Languages
 echo ""
