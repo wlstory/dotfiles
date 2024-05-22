@@ -39,6 +39,6 @@ read
 #defaults write com.apple.Safari AutoFillPasswords -bool false            # Disable saving passwords (I use 1Password)
 #defaults write com.apple.Safari AutoFillCreditCardData -bool false       # Disable auto filling Credit Cards
 
-
+#defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 512 # Disable in-icon previews
 
 EOF
