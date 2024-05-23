@@ -9,15 +9,11 @@
 
 ############################
 # THINGS TO DO / NOT YET AUTOMATED:
-# - Turn off password saving and auto-fill in browsers (Chrome, Safari, Brave, DuckDuckGo)
-# - Set HotCorners
-# - Set-up the Dock app order and icons on the Dock to include Applications
-# - Set Dock to Hide and Show with animation
 # - Check for OS Updates FIRST before any installations
-# - Learn and apply the Logitech Optiions Plus feature flags
+# - Learn and apply the Logitech Options Plus feature flags / mouse settings
 # - Check on ability to set/install Chrome browser extensions
 # - Establishing settings on Notifications
-# - Logitech Mouse settings? 
+
 
 # dotfiles directory 
 dotfiledir="${HOME}/dotfiles"
