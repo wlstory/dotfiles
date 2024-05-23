@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#####################
+# Reference
+# https://lupin3000.github.io/macOS/defaults/
+#####################
+
 # Configure Finder
 echo "Configuring Finder ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -26,16 +31,18 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 # Safari opens with: last session
 defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
+# disable safari auto open files
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 killall Safari
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
 
 
 # Configure Passwords
-defaults write com.apple.keychainaccess ShowKeychainStatusInMenuBar -bool true
+#defaults write com.apple.keychainaccess ShowKeychainStatusInMenuBar -bool false
 
 
 # Configure Internet Accounts
-defaults write com.apple.systempreferences EnableBundles -bool true
+#defaults write com.apple.systempreferences EnableBundles -bool true
 
 # Configure Dock
 defaults write com.apple.dock autohide -bool true
