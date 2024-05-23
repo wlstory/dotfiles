@@ -43,5 +43,6 @@ defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 512 # D
 
 # Adding items to the doc and setting hot corners requires a Dock restart
 killall Dock
+killall Finder
 
 #EOF
