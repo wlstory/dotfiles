@@ -33,13 +33,15 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
 # disable safari auto open files
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# Disable saving passwords - avoid issues with external password managers)
+defaults write com.apple.Safari AutoFillPasswords -bool false            
+# Disable auto filling Credit Cards
+defaults write com.apple.Safari AutoFillCreditCardData -bool false       
 killall Safari
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
 
-
 # Configure Passwords
 #defaults write com.apple.keychainaccess ShowKeychainStatusInMenuBar -bool false
-
 
 # Configure Internet Accounts
 #defaults write com.apple.systempreferences EnableBundles -bool true
