@@ -1,14 +1,34 @@
 #!/bin/bash
 
 # Configure Finder
+echo "Configuring Finder ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowPathbar -bool true
+#defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.finder AppleShowAllExtensions -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool true
+defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
+defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# Automatically open a new Finder window when a volume is mounted
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool false
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool false
+defaults write com.apple.finder OpenWindowForNewRemovableDisk    -bool false
+# Restart Finder
+killall Finder
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Finder Configuration Complete"
 
 # Configure Safari
+echo "Configuring Safari ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+# Safari opens with: last session
+defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
+killall Safari
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
+
 
 # Configure Passwords
 defaults write com.apple.keychainaccess ShowKeychainStatusInMenuBar -bool true
@@ -68,6 +88,21 @@ defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data
 killall Dock
 
 # Hot Corners - https://dev.to/darrinndeal/setting-mac-hot-corners-in-the-terminal-3de
+#================================================
+# *                 HOT CORNERS
+#================================================
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
 echo "♨️  Setting Hot Corners"
 defaults write com.apple.dock wvous-tl-corner -int 3 # Top Right    - Show Application Windows
 defaults write com.apple.dock wvous-tr-corner -int 2 # Top Right    - Mission Control
