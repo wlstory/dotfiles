@@ -46,4 +46,44 @@ done
 # Run the baseline config script
 #./baseline_prefs.sh
 
+echo "Sign in to Dashlane (in both Safari and Chrome). Press enter to continue..."
+read
+
+echo "Sign in to Logitech Options Plus. Press enter to continue..."
+read
+
+echo "Sign in to Google Chrome. Press enter to continue..."
+read
+
+echo "Sign in to Box-Drive. Press enter to continue..."
+read
+
+echo "Sign in to Dropbox. Press enter to continue..."
+read
+
+echo "Sign in to Spotify. Press enter to continue..."
+read
+
+echo "Sign in to Evernote. Press enter to continue..."
+read
+
+echo "Sign in to Discord. Press enter to continue..."
+read
+
+echo "Sign in to Microsoft Office. Press enter to continue..."
+read
+
+echo "Sign in to Sonos. Press enter to continue..."
+read
+
+#echo "Open Rectangle and give it necessary permissions. Press enter to continue..."
+#read
+
+#echo "Import your Rectangle settings located in ~/dotfiles/settings/RectangleConfig.json. Press enter to continue..."
+#read
+
+echo "Sign in to NordVPN. Press enter to continue..."
+read
+
+
 echo "Installation Complete!"
