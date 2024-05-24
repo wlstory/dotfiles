@@ -108,7 +108,6 @@ apps=(
     "spotify"
     "discord"
     "box-drive"
-    "box-sync"
     "google-drive"
     "dropbox"
     "gimp"
@@ -207,11 +206,6 @@ echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
 # Programming Languages
 echo ""
 echo "🧑‍💻 Installing Programming Languages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-if command -v rustc > /dev/null; then
-  echo "🦀 rust already installed"
-else
-  /bin/bash -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- --no-modify-path
-fi
 
 if [[ -d "$HOME/.rubies" ]]; then
   echo "💎 Ruby already installed"
