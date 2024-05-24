@@ -95,25 +95,33 @@ killall Dock
 #done
 
 # Add specified apps to the Dock
-dockutil --add /Applications/Fantastical.app
-dockutil --add /Applications/Evernote.app
-dockutil --add '/Applications/Google Chrome.app'
-dockutil --add '/Applications/Microsoft Edge.app'
-dockutil --add '/Applications/Microsoft Excel.app'
-dockutil --add '/Applications/Microsoft PowerPoint.app'
-dockutil --add '/Applications/Microsoft Word.app'
-dockutil --add '/Applications/Microsoft Teams.app'
-dockutil --add '/Applications/Visual Studio Code.app'
-dockutil --add /Applications/Spotify.app
+dockutil --add /Applications/Fantastical.app --no-restart
+dockutil --add /Applications/Evernote.app --no-restart
+dockutil --add '/Applications/Google Chrome.app' --after Safari --no-restart
+dockutil --add '/Applications/Microsoft Edge.app' --after 'Google Chrome' --no-restart
+dockutil --add '/Applications/Microsoft Excel.app' --no-restart
+dockutil --add '/Applications/Microsoft PowerPoint.app' --no-restart
+dockutil --add '/Applications/Microsoft Word.app' --no-restart
+dockutil --add '/Applications/Microsoft Teams.app' --no-restart
+dockutil --add '/Applications/Visual Studio Code.app' --no-restart
+dockutil --add /Applications/Spotify.app --after Music --no-restart
 
 # Restart Dock
 killall Dock
 
 # Add Applications folder to the dock
 # defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict></dict></dict>"
-dockutil --add '/Applications' --view grid --display folder --allhomes
+dockutil --add '/Applications' --view grid --display folder --allhomes --no-restart
 
 # Restart Dock
+#killall Dock
+
+# Re-arrange Dock
+dockutil --move 'System Settings' --position 2 --no-restart
+dockutil --move 'App Store' --position 3 --no-restart
+dockutil --move 'Fantastical' --after 'Mail' --no-restart
+
+# Restart Dock to ensure all changes are reflected
 killall Dock
 
 # Hot Corners - https://dev.to/darrinndeal/setting-mac-hot-corners-in-the-terminal-3de
@@ -138,6 +146,6 @@ defaults write com.apple.dock wvous-tr-corner -int 2 # Top Right    - Mission Co
 defaults write com.apple.dock wvous-bl-corner -int 4 # Bottom Left  - Desktop
 defaults write com.apple.dock wvous-br-corner -int 5 # Bottom Right - Start Screen Saver
 
-# Restart Finder and Dock
+# FINAL Restart Finder and Dock
 killall Finder
 killall Dock
