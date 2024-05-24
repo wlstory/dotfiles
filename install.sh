@@ -83,4 +83,4 @@ echo "Sign in to NordVPN. Press enter to continue..."
 read
 
 
-echo "Installation Complete!"
+echo "Installation Complete!*****************************************************************************"
