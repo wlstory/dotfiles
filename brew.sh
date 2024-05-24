@@ -57,7 +57,7 @@ packages=(
     "raspberry-pi-imager"
     "grammarly-desktop"
     "little-snitch"
-    "util"
+    "dockutil"
 )
 
 echo "🍺 Installing Homebrew Packages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
