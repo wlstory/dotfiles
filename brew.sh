@@ -90,10 +90,6 @@ read git_user_email
 $(brew --prefix)/bin/git config --global user.name "$git_user_name"
 $(brew --prefix)/bin/git config --global user.email "$git_user_email"
 
-# Remove this section eventually... Not needed. 
-# Create the tutorial virtual environment I use frequently
-# $(brew --prefix)/bin/python3 -m venv "${HOME}/tutorial"
-
 # Install Prettier - used in both VS Code and Sublime Text
 $(brew --prefix)/bin/npm install --global prettier
 
@@ -125,7 +121,6 @@ apps=(
     "engine-dj"
     "chatgpt"
     "zoom"
-    
 )
 
 # Loop over the array to install each application.
@@ -163,6 +158,7 @@ app_store=(
     "302584613" # Amazon Kindle Reader
     "1462114288" # Grammarly Safari
 )
+
 # Mac App Store Installs
 echo "Installing Mac App Store apps ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 # Loop over the array to install each application from Apple Store.
@@ -176,33 +172,6 @@ for app in "${app_store[@]}"; do
  done
 
 echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
-
-# Code needs to be moved to after the install.sh file executes or near the end. Works in test.sh. 
-# Define array for Dock updates
-#dock_apps=(
-#	"Fantastical.app"
-#	"Evernote.app"
-# 	"Google Chrome.app"
-#  	"Microsoft Edge.app"
-#   	"Microsoft Excel.app"
-#    	"Microsoft PowerPoint.app"
-#     	"Microsoft Word.app"
-#     	"Microsoft Teams.app"
-#      	"Visual Studio Code.app"
-#       	"Spotify.app"
-#)
-
-# Add applications to dock
-#echo ""
-#echo "🖥️ Adding applications to the dock ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-#for appname in "${dock_apps[@]}"; do
-#  if defaults read com.apple.dock persistent-apps | grep -q "${appname}"; then
-#    echo "📲 ${appname} already on the dock"
-#  else
-#    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/${appname}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-#  fi
-#done
-#echo ">>>>>>>>>>>>>>>>>>>---- Dock updated."
 
 # Programming Languages
 echo ""
@@ -228,6 +197,3 @@ brew update
 brew upgrade
 brew upgrade --cask
 brew cleanup
-
-# Adding items to the doc and setting hot corners requires a Dock restart
-#killall 
