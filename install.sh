@@ -61,6 +61,9 @@ read
 echo "Sign in to Dropbox. Press enter to continue..."
 read
 
+echo "Sign in to OneDrive. Press enter to continue..."
+read
+
 echo "Sign in to Spotify. Press enter to continue..."
 read
 
@@ -75,12 +78,6 @@ read
 
 echo "Sign in to Sonos. Press enter to continue..."
 read
-
-#echo "Open Rectangle and give it necessary permissions. Press enter to continue..."
-#read
-
-#echo "Import your Rectangle settings located in ~/dotfiles/settings/RectangleConfig.json. Press enter to continue..."
-#read
 
 echo "Sign in to NordVPN. Press enter to continue..."
 read
