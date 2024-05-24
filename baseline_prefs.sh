@@ -70,7 +70,7 @@ defaults write com.apple.dock tilesize -int 36
 dockutil --remove 'Maps'
 dockutil --remove 'Calendar'
 dockutil --remove 'Notes'
-dockutil --remoe 'Freeform'
+dockutil --remove 'Freeform'
 
 # Restart Dock
 killall Dock
