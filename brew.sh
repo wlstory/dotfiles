@@ -121,6 +121,7 @@ apps=(
     "engine-dj"
     "chatgpt"
     "zoom"
+    "warp"
 )
 
 # Loop over the array to install each application.
