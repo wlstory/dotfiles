@@ -44,7 +44,7 @@ done
 ./sublime.sh
 
 # Run the baseline config script
-#./baseline_prefs.sh
+./baseline_prefs.sh
 
 echo "Sign in to Dashlane (in both Safari and Chrome). Press enter to continue..."
 read
