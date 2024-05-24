@@ -57,7 +57,7 @@ packages=(
     "raspberry-pi-imager"
     "grammarly-desktop"
     "little-snitch"
-    "dockutil"
+    "util"
 )
 
 echo "🍺 Installing Homebrew Packages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
@@ -230,4 +230,4 @@ brew upgrade --cask
 brew cleanup
 
 # Adding items to the doc and setting hot corners requires a Dock restart
-killall Dock
+#killall 
