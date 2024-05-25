@@ -159,6 +159,7 @@ app_store=(
     "517914548" # Dashlane
     "302584613" # Amazon Kindle Reader
     "1462114288" # Grammarly Safari
+    "497799835" # Xcode
 )
 
 # Mac App Store Installs
@@ -236,7 +237,8 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # Disable saving passwords - avoid issues with external password managers)
 defaults write com.apple.Safari AutoFillPasswords -bool false            
 # Disable auto filling Credit Cards
-defaults write com.apple.Safari AutoFillCreditCardData -bool false       
+defaults write com.apple.Safari AutoFillCreditCardData -bool false 
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true      
 killall Safari
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
 
