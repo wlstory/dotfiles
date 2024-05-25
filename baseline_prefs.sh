@@ -4,7 +4,7 @@
 # Reference
 # https://lupin3000.github.io/macOS/defaults/
 #####################
-# Committed Locally and Synced to GitHub
+# Committed Locally and Synced to GitHub - Remove eventually
 
 # Configure Finder
 echo "Configuring Finder ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
