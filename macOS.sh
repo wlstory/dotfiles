@@ -24,21 +24,6 @@ read
 #    end repeat
 #end tell
 
-
-# Hot Corners - https://dev.to/darrinndeal/setting-mac-hot-corners-in-the-terminal-3de
-#echo "♨️  Hot Corners"
-#defaults write com.apple.dock wvous-tl-corner -int 5 # Top Right    - Start Screen Saver
-#defaults write com.apple.dock wvous-tr-corner -int 2 # Top Right    - Mission Control
-#defaults write com.apple.dock wvous-bl-corner -int 4 # Bottom Left  - Desktop
-#defaults write com.apple.dock wvous-br-corner -int 0 # Bottom Right - No option
-
-# Safari Preferences
-#echo "🦁  Safari Settings"
-#defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true # Show full website address
-#defaults write com.apple.Safari IncludeDevelopMenu -bool true            # Show Develop menu in menu bar
-#defaults write com.apple.Safari AutoFillPasswords -bool false            # Disable saving passwords (I use 1Password)
-#defaults write com.apple.Safari AutoFillCreditCardData -bool false       # Disable auto filling Credit Cards
-
 defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 512 # Disable in-icon previews
 
 # Adding items to the doc and setting hot corners requires a Dock restart

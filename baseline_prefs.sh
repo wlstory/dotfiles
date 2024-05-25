@@ -77,11 +77,7 @@ dockutil --add /Applications/Spotify.app --after Music --no-restart
 killall Dock
 
 # Add Applications folder to the dock
-# defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict></dict></dict>"
 dockutil --add '/Applications' --view grid --display folder --allhomes --no-restart
-
-# Restart Dock
-#killall Dock
 
 # Re-arrange Dock
 dockutil --move 'System Settings' --position 2 --no-restart
