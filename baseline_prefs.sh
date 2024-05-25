@@ -4,6 +4,7 @@
 # Reference
 # https://lupin3000.github.io/macOS/defaults/
 #####################
+# Committed Locally and Synced to GitHub
 
 # Configure Finder
 echo "Configuring Finder ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
@@ -51,21 +52,6 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 36
 
-# Remove apps from the dock
-#dock_apps_to_remove=(
-#    "/Applications/Maps.app"
-#    "/Applications/Calendar.app"
-#    "/Applications/Contacts.app"
-#    "/Applications/Notes.app"
-#    "/Applications/Freeform.app"
-#)
-
-#for app_to_remove in "${dock_apps_to_remove[@]}"; do
-#    if [ -d "$app_to_remove" ]; then
-#        defaults write com.apple.dock persistent-apps -array-remove "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app_to_remove</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-#    fi
-#done
-
 # Remove specified apps from the Dock
 dockutil --remove 'Maps'
 dockutil --remove 'Calendar'
@@ -74,25 +60,6 @@ dockutil --remove 'Freeform'
 
 # Restart Dock
 killall Dock
-
-# Add apps to the dock
-#dock_apps_to_add=(
-#    "/Applications/Fantastical.app"
-#    "/Applications/Evernote.app"
-#    "/Applications/Google Chrome.app"
-#    "/Applications/Microsoft Edge.app"
-#    "/Applications/Microsoft Excel.app"
-#    "/Applications/Microsoft PowerPoint.app"
-#    "/Applications/Microsoft Word.app"
-#    "/Applications/Microsoft Teams.app"
-#    "/Applications/Visual Studio Code.app"
-#    "/Applications/Spotify.app"
-#)
-#for app_to_add in "${dock_apps_to_add[@]}"; do
-#    if [ -d "$app_to_add" ]; then
-#        defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$app_to_add</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-#    fi
-#done
 
 # Add specified apps to the Dock
 dockutil --add /Applications/Fantastical.app --no-restart
