@@ -13,6 +13,7 @@
 # - Learn and apply the Logitech Options Plus feature flags / mouse settings
 # - Check on ability to set/install Chrome browser extensions
 # - Establishing settings on Notifications
+# - Add Prime Video, Netflix, and Disney+ app installs. 
 
 
 # dotfiles directory 
