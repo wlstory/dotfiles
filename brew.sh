@@ -160,6 +160,8 @@ app_store=(
     "302584613" # Amazon Kindle Reader
     "1462114288" # Grammarly Safari
     "497799835" # Xcode
+    "545519333" # Amazon Prime Video
+    "441258766" # Magnet
 )
 
 # Mac App Store Installs
