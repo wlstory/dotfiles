@@ -52,7 +52,6 @@ packages=(
     "starship"
     "obsidian"
     "whatsapp"
-    "fantastical"
     "tree"
     "raspberry-pi-imager"
     "grammarly-desktop"
@@ -265,7 +264,6 @@ dockutil --remove 'Freeform'
 killall Dock
 
 # Add specified apps to the Dock
-dockutil --add /Applications/Fantastical.app --no-restart
 dockutil --add /Applications/Evernote.app --no-restart
 dockutil --add '/Applications/Google Chrome.app' --after Safari --no-restart
 dockutil --add '/Applications/Microsoft Edge.app' --after 'Google Chrome' --no-restart
@@ -286,7 +284,7 @@ dockutil --add '/Applications' --view grid --display folder --allhomes --no-rest
 # Re-arrange Dock
 dockutil --move 'System Settings' --position 2 --no-restart
 dockutil --move 'App Store' --position 3 --no-restart
-dockutil --move 'Fantastical' --after 'Mail' --no-restart
+dockutil --move 'Calendar' --after 'Mail' --no-restart
 
 # Restart Dock to ensure all changes are reflected
 killall Dock
