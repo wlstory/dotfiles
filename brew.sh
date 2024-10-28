@@ -55,6 +55,7 @@ packages=(
     "tree"
     "raspberry-pi-imager"
     "grammarly-desktop"
+    "bruno"
     "little-snitch"
     "dockutil"
 
