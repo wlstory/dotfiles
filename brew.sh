@@ -249,7 +249,7 @@ echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
 # Configure Dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
-defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 44
 
 # Remove specified apps from the Dock
 dockutil --remove 'Maps'
