@@ -102,7 +102,6 @@ apps=(
     "sublime-text"
     "visual-studio-code"
     "spotify"
-    "discord"
     "box-drive"
     "google-drive"
     "dropbox"
