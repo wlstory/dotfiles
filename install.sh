@@ -69,8 +69,8 @@ read
 echo "Sign in to Evernote. Press enter to continue..."
 read
 
-echo "Sign in to Discord. Press enter to continue..."
-read
+#echo "Sign in to Discord. Press enter to continue..."
+#read
 
 echo "Sign in to Microsoft Office. Press enter to continue..."
 read
