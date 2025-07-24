@@ -41,12 +41,6 @@ done
 # Run VS Code Script
 ./vscode.sh
 
-# Run the Sublime Script
-./sublime.sh
-
-
-echo "Sign in to Dashlane (in both Safari and Chrome). Press enter to continue..."
-read
 
 echo "Sign in to Logitech Options Plus. Press enter to continue..."
 read
@@ -65,12 +59,6 @@ read
 
 echo "Sign in to Spotify. Press enter to continue..."
 read
-
-echo "Sign in to Evernote. Press enter to continue..."
-read
-
-#echo "Sign in to Discord. Press enter to continue..."
-#read
 
 echo "Sign in to Microsoft Office. Press enter to continue..."
 read
