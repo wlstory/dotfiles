@@ -41,18 +41,15 @@ packages=(
     "git"
     "tree"
     "pylint"
-    "black"
+    "eslint"
     "node"
+    "postgresql"
     "mas"
     "gh"
-    "shellcheck"
-    "dashlane/tap/dashlane-cli"
     "ruby-install"
     "chruby"
     "starship"
     "obsidian"
-    "tree"
-    "raspberry-pi-imager"
     "grammarly-desktop"
     "bruno"
     "little-snitch"
@@ -99,7 +96,8 @@ apps=(
     "microsoft-edge"
     "firefox"
     "duckduckgo"
-    "sublime-text"
+    "1password"
+    "1password-cli"
     "visual-studio-code"
     "spotify"
     "box-drive"
@@ -109,7 +107,6 @@ apps=(
     "microsoft-teams"
     "microsoft-office"
     "adobe-acrobat-reader"
-    "evernote"
     "github"
     "logi-options-plus"
     "sonos"
@@ -117,8 +114,21 @@ apps=(
     "elgato-stream-deck"
     "engine-dj"
     "chatgpt"
+    "claude"
     "zoom"
     "warp"
+    "craft"
+    "beekeeper-studio"
+    "ableton-live-lite"
+    "zed"
+    "readdle-spark"
+    "windsurf"
+    "capacities"
+    "linear-linear"
+    "iterm2"
+    "slack"
+    "tailscale"
+    "replit"
 )
 
 # Loop over the array to install each application.
@@ -152,7 +162,6 @@ fi
 
 # Define array for Apple Store Installs
 app_store=(
-    "517914548" # Dashlane
     "302584613" # Amazon Kindle Reader
     "1462114288" # Grammarly Safari
     "497799835" # Xcode
@@ -253,7 +262,6 @@ defaults write com.apple.dock tilesize -int 44
 
 # Remove specified apps from the Dock
 dockutil --remove 'Maps'
-dockutil --remove 'Calendar'
 dockutil --remove 'Notes'
 dockutil --remove 'Freeform'
 
@@ -261,7 +269,6 @@ dockutil --remove 'Freeform'
 killall Dock
 
 # Add specified apps to the Dock
-dockutil --add /Applications/Evernote.app --no-restart
 dockutil --add '/Applications/Google Chrome.app' --after Safari --no-restart
 dockutil --add '/Applications/Microsoft Edge.app' --after 'Google Chrome' --no-restart
 dockutil --add '/Applications/Microsoft Excel.app' --no-restart
