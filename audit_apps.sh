@@ -96,7 +96,10 @@ log_error() {
 }
 
 log_verbose() {
-    [[ $VERBOSE -eq 1 ]] && echo -e "${CYAN}[VERBOSE]${RESET} $*"
+    if [[ $VERBOSE -eq 1 ]]; then
+        echo -e "${CYAN}[VERBOSE]${RESET} $*"
+    fi
+    return 0
 }
 
 log_section() {
