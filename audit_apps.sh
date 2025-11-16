@@ -331,6 +331,7 @@ parse_brew_sh() {
             if [[ -n "$pkg" ]]; then
                 temp_packages+=("$pkg")
             fi
+            true  # Prevent set -e from exiting on empty pkg
         fi
     done <<< "$content"
     
@@ -370,6 +371,7 @@ parse_brew_sh() {
             if [[ -n "$app" ]]; then
                 temp_apps+=("$app")
             fi
+            true  # Prevent set -e from exiting on empty app
         fi
     done <<< "$content"
     
@@ -414,6 +416,7 @@ parse_brew_sh() {
                 APP_STORE_COMMENTS[$id]="$comment"
                 log_verbose "Found MAS entry: $id # $comment"
             fi
+            true  # Prevent set -e from exiting on non-matching lines
         fi
     done <<< "$content"
     
