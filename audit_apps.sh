@@ -408,12 +408,14 @@ parse_brew_sh() {
                 break
             fi
             
-            # Extract ID and comment
+            # Extract ID and comment using different approach for zsh compatibility
+            # In zsh with set -u, BASH_REMATCH might not be set, so use match groups differently
             if [[ "$line" =~ \"([0-9]+)\"[[:space:]]*#[[:space:]]*(.+) ]]; then
-                # Access BASH_REMATCH safely - check it exists first
-                if [[ ${#BASH_REMATCH[@]} -ge 3 ]]; then
-                    local id="${BASH_REMATCH[1]}"
-                    local comment="${BASH_REMATCH[2]}"
+                # In zsh, match groups are in $match array, but for bash compatibility
+                # we access them directly but with safety checks
+                local id="${match[1]:-${BASH_REMATCH[1]:-}}"
+                local comment="${match[2]:-${BASH_REMATCH[2]:-}}"
+                if [[ -n "$id" ]]; then
                     temp_app_store+=("$id")
                     APP_STORE_COMMENTS[$id]="$comment"
                     log_verbose "Found MAS entry: $id # $comment"
