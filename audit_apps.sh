@@ -410,11 +410,14 @@ parse_brew_sh() {
             
             # Extract ID and comment
             if [[ "$line" =~ \"([0-9]+)\"[[:space:]]*#[[:space:]]*(.+) ]]; then
-                local id="${BASH_REMATCH[1]}"
-                local comment="${BASH_REMATCH[2]}"
-                temp_app_store+=("$id")
-                APP_STORE_COMMENTS[$id]="$comment"
-                log_verbose "Found MAS entry: $id # $comment"
+                # Access BASH_REMATCH safely - check it exists first
+                if [[ ${#BASH_REMATCH[@]} -ge 3 ]]; then
+                    local id="${BASH_REMATCH[1]}"
+                    local comment="${BASH_REMATCH[2]}"
+                    temp_app_store+=("$id")
+                    APP_STORE_COMMENTS[$id]="$comment"
+                    log_verbose "Found MAS entry: $id # $comment"
+                fi
             fi
             true  # Prevent set -e from exiting on non-matching lines
         fi
