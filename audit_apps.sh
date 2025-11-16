@@ -458,7 +458,7 @@ classify_items() {
             log_warning "Known misclassification: '$pkg' is a cask, not a formula"
             MISCLASSIFIED_ITEMS+=("$pkg|packages->apps")
             ITEM_CLASSIFICATIONS[$pkg]="cask"
-            ((misclassified_count++))
+            misclassified_count=$((misclassified_count + 1))
         else
             # Try to determine actual type
             if brew info --formula "$pkg" &>/dev/null; then
@@ -467,7 +467,7 @@ classify_items() {
                 log_warning "Misclassification detected: '$pkg' is a cask, not a formula"
                 MISCLASSIFIED_ITEMS+=("$pkg|packages->apps")
                 ITEM_CLASSIFICATIONS[$pkg]="cask"
-                ((misclassified_count++))
+                misclassified_count=$((misclassified_count + 1))
             else
                 log_warning "Unknown item in packages: '$pkg'"
                 ITEM_CLASSIFICATIONS[$pkg]="unknown"
@@ -492,7 +492,7 @@ classify_items() {
             log_warning "App '$app' appears to be a formula, not a cask"
             MISCLASSIFIED_ITEMS+=("$app|apps->packages")
             ITEM_CLASSIFICATIONS[$app]="formula"
-            ((invalid_apps++))
+            invalid_apps=$((invalid_apps + 1))
         else
             log_warning "Unknown cask in apps: '$app'"
             ITEM_CLASSIFICATIONS[$app]="unknown"
@@ -1216,9 +1216,9 @@ show_summary() {
     for action in "${ACTIONS[@]}"; do
         local action_type=$(echo "$action" | cut -d'|' -f1)
         case "$action_type" in
-            add) ((added++)) ;;
-            remove) ((removed++)) ;;
-            move) ((moved++)) ;;
+            add) added=$((added + 1)) ;;
+            remove) removed=$((removed + 1)) ;;
+            move) moved=$((moved + 1)) ;;
         esac
     done
     
