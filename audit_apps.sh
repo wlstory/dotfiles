@@ -309,9 +309,9 @@ parse_brew_sh() {
     local temp_packages=()
     
     while IFS= read -r line; do
-        ((line_num++))
+        line_num=$((line_num + 1))
         
-        if [[ "$line" =~ ^packages=\( ]]; then
+        if [[ "$line" == packages=\(* ]]; then
             in_packages=1
             PACKAGES_START_LINE=$line_num
             log_verbose "Found packages array start at line $line_num"
@@ -319,7 +319,7 @@ parse_brew_sh() {
         fi
         
         if [[ $in_packages -eq 1 ]]; then
-            if [[ "$line" =~ ^\) ]]; then
+            if [[ "$line" == \)* ]]; then
                 PACKAGES_END_LINE=$line_num
                 in_packages=0
                 log_verbose "Found packages array end at line $line_num"
@@ -350,9 +350,9 @@ parse_brew_sh() {
     local temp_apps=()
     
     while IFS= read -r line; do
-        ((line_num++))
+        line_num=$((line_num + 1))
         
-        if [[ "$line" =~ ^apps=\( ]]; then
+        if [[ "$line" == apps=\(* ]]; then
             in_apps=1
             APPS_START_LINE=$line_num
             log_verbose "Found apps array start at line $line_num"
@@ -360,7 +360,7 @@ parse_brew_sh() {
         fi
         
         if [[ $in_apps -eq 1 ]]; then
-            if [[ "$line" =~ ^\) ]]; then
+            if [[ "$line" == \)* ]]; then
                 APPS_END_LINE=$line_num
                 in_apps=0
                 log_verbose "Found apps array end at line $line_num"
@@ -391,9 +391,9 @@ parse_brew_sh() {
     local temp_app_store=()
     
     while IFS= read -r line; do
-        ((line_num++))
+        line_num=$((line_num + 1))
         
-        if [[ "$line" =~ ^app_store=\( ]]; then
+        if [[ "$line" == app_store=\(* ]]; then
             in_app_store=1
             APP_STORE_START_LINE=$line_num
             log_verbose "Found app_store array start at line $line_num"
@@ -401,7 +401,7 @@ parse_brew_sh() {
         fi
         
         if [[ $in_app_store -eq 1 ]]; then
-            if [[ "$line" =~ ^\) || "$line" =~ ^\s*\) ]]; then
+            if [[ "$line" == \)* || "$line" == [[:space:]]\)* ]]; then
                 APP_STORE_END_LINE=$line_num
                 in_app_store=0
                 log_verbose "Found app_store array end at line $line_num"
