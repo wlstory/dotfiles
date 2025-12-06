@@ -141,24 +141,24 @@ for app in "${apps[@]}"; do
     fi
 done
 
-# Install Source Code Pro Font
-# Tap the Homebrew font cask repository if not already tapped
-# *** This tap is deprecated. Find replacement. ***
-# *** Turn this into an array and implement in loop
-brew tap | grep -q "^homebrew/cask-fonts$" || brew tap homebrew/cask-fonts
-brew install --cask font-jetbrains-mono
-brew install --cask font-fira-code
+# Install Fonts
+# Note: homebrew/cask-fonts tap was deprecated March 2024 and merged into homebrew/cask
+# Fonts now install directly without needing to tap
+fonts=(
+    "font-jetbrains-mono"
+    "font-fira-code"
+    "font-source-code-pro"
+)
 
-# Define the font name
-font_name="font-source-code-pro"
+for font in "${fonts[@]}"; do
+    if brew list --cask | grep -q "^$font\$"; then
+        echo "✅ $font is already installed. Skipping..."
+    else
+        echo "Installing $font..."
+        brew install --cask "$font"
+    fi
+done
 
-# Check if the font is already installed
-if brew list --cask | grep -q "^$font_name\$"; then
-    echo "✅ $font_name is already installed. Skipping..."
-else
-    echo "Installing $font_name..."
-    brew install --cask "$font_name"
-fi
 
 # Define array for Apple Store Installs
 app_store=(
@@ -224,11 +224,13 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool true
 defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool true
 defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# Keep folders on top on Desktop (macOS Sonoma+)
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
 # Automatically open a new Finder window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool false
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool false
 defaults write com.apple.finder OpenWindowForNewRemovableDisk    -bool false
-# Restart Finder
+# Restart Finder (Finder auto-restarts when killed - this is the standard approach)
 killall Finder
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Finder Configuration Complete"
 
@@ -245,8 +247,9 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false            
 # Disable auto filling Credit Cards
 defaults write com.apple.Safari AutoFillCreditCardData -bool false 
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true      
-killall Safari
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+# Gracefully quit Safari if running (preserves unsaved work, prompts user if needed)
+osascript -e 'tell application "System Events" to if (name of processes) contains "Safari" then tell application "Safari" to quit' 2>/dev/null || true
 echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---- Safari Configuration Complete"
 
 # Configure Passwords
@@ -261,12 +264,9 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 44
 
 # Remove specified apps from the Dock
-dockutil --remove 'Maps'
-dockutil --remove 'Notes'
-dockutil --remove 'Freeform'
-
-# Restart Dock
-killall Dock
+dockutil --remove 'Maps' --no-restart
+dockutil --remove 'Notes' --no-restart
+dockutil --remove 'Freeform' --no-restart
 
 # Add specified apps to the Dock
 dockutil --add '/Applications/Google Chrome.app' --after Safari --no-restart
@@ -278,9 +278,6 @@ dockutil --add '/Applications/Microsoft Teams.app' --no-restart
 dockutil --add '/Applications/Visual Studio Code.app' --no-restart
 dockutil --add /Applications/Spotify.app --after Music --no-restart
 
-# Restart Dock
-killall Dock
-
 # Add Applications folder to the dock
 # defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict></dict></dict>"
 dockutil --add '/Applications' --view grid --display folder --allhomes --no-restart
@@ -290,8 +287,11 @@ dockutil --move 'System Settings' --position 2 --no-restart
 dockutil --move 'App Store' --position 3 --no-restart
 dockutil --move 'Calendar' --after 'Mail' --no-restart
 
-# Restart Dock to ensure all changes are reflected
-killall Dock
+# Stage Manager (macOS Ventura+)
+# Set to false to disable, true to enable
+# Uncomment the line matching your preference:
+# defaults write com.apple.WindowManager GloballyEnabled -bool true   # Enable Stage Manager
+defaults write com.apple.WindowManager GloballyEnabled -bool false    # Disable Stage Manager
 
 # Hot Corners - https://dev.to/darrinndeal/setting-mac-hot-corners-in-the-terminal-3de
 #================================================
@@ -316,5 +316,7 @@ defaults write com.apple.dock wvous-bl-corner -int 4 # Bottom Left  - Desktop
 defaults write com.apple.dock wvous-br-corner -int 5 # Bottom Right - Start Screen Saver
 
 # FINAL Restart Finder and Dock
+# Note: killall is the standard approach for Finder/Dock - they auto-restart immediately
+# This applies all accumulated defaults and dockutil changes
 killall Finder
 killall Dock
