@@ -32,6 +32,13 @@ for file in "${files[@]}"; do
     ln -sf "${dotfiledir}/.${file}" "${HOME}/.${file}"
 done
 
+# Create ~/.config directory if it doesn't exist
+mkdir -p "${HOME}/.config"
+
+# Symlink Starship configuration
+echo "Creating symlink for Starship config"
+ln -sf "${dotfiledir}/config/starship.toml" "${HOME}/.config/starship.toml"
+
 # Run the MacOS Script
 ./macOS.sh
 

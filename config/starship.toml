@@ -1,0 +1,63 @@
+# Starship Prompt Configuration
+# Documentation: https://starship.rs/config/
+
+# Prompt format - similar to the legacy custom prompt style
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$ruby\
+$line_break\
+$character"""
+
+# Disable blank line at start of prompt
+add_newline = true
+
+[username]
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+ssh_only = false
+format = " at [$hostname](bold purple)"
+disabled = false
+
+[directory]
+style = "bold green"
+format = " in [$path]($style)[$read_only]($read_only_style)"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "bold cyan"
+format = " on [$symbol$branch]($style)"
+symbol = ""
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))'
+style = "bold yellow"
+
+[python]
+format = " via [$symbol($version )(\\($virtualenv\\) )]($style)"
+symbol = "py "
+style = "bold yellow"
+
+[nodejs]
+format = " via [$symbol($version )]($style)"
+symbol = "node "
+style = "bold green"
+
+[ruby]
+format = " via [$symbol($version )]($style)"
+symbol = "rb "
+style = "bold red"
+
+[character]
+success_symbol = "[\\$](bold white)"
+error_symbol = "[\\$](bold red)"

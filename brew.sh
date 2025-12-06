@@ -59,17 +59,57 @@ echo "$(brew --prefix)/bin/zsh" | sudo tee -a /etc/shells >/dev/null
 # Set the Homebrew zsh as default shell
 chsh -s "$(brew --prefix)/bin/zsh"
 
-# Git config name
-echo "Please enter your FULL NAME for Git configuration:"
-read git_user_name
+# =============================================================================
+# Git Configuration
+# =============================================================================
+# Attempts to use 1Password CLI for credentials (secure, automated)
+# Falls back to interactive prompts if 1Password CLI is unavailable
 
-# Git config email
-echo "Please enter your EMAIL for Git configuration:"
-read git_user_email
+configure_git() {
+    local git_cmd="$(brew --prefix)/bin/git"
+    local git_user_name=""
+    local git_user_email=""
 
-# Set my git credentials
-$(brew --prefix)/bin/git config --global user.name "$git_user_name"
-$(brew --prefix)/bin/git config --global user.email "$git_user_email"
+    # Check if 1Password CLI is available and authenticated
+    if command -v op &>/dev/null && op account list &>/dev/null 2>&1; then
+        echo "🔐 Attempting to retrieve Git credentials from 1Password..."
+
+        # Try to read from 1Password
+        # Adjust the vault/item path to match your 1Password structure:
+        #   op://Personal/Git Config/name
+        #   op://Personal/Git Config/email
+        git_user_name=$(op read "op://Personal/Git Config/name" 2>/dev/null) || git_user_name=""
+        git_user_email=$(op read "op://Personal/Git Config/email" 2>/dev/null) || git_user_email=""
+
+        if [[ -n "$git_user_name" && -n "$git_user_email" ]]; then
+            echo "✅ Retrieved Git credentials from 1Password"
+        else
+            echo "⚠️  Could not read Git credentials from 1Password (item may not exist)"
+            git_user_name=""
+            git_user_email=""
+        fi
+    else
+        echo "ℹ️  1Password CLI not available or not signed in"
+    fi
+
+    # Fall back to interactive prompts if needed
+    if [[ -z "$git_user_name" ]]; then
+        echo "Please enter your FULL NAME for Git configuration:"
+        read git_user_name
+    fi
+
+    if [[ -z "$git_user_email" ]]; then
+        echo "Please enter your EMAIL for Git configuration:"
+        read git_user_email
+    fi
+
+    # Set git credentials
+    "$git_cmd" config --global user.name "$git_user_name"
+    "$git_cmd" config --global user.email "$git_user_email"
+    echo "✅ Git configured: $git_user_name <$git_user_email>"
+}
+
+configure_git
 
 # Install Prettier - used in both VS Code and Sublime Text
 $(brew --prefix)/bin/npm install --global prettier
