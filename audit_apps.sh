@@ -1,6 +1,18 @@
 #!/usr/bin/env zsh
 
 ############################
+# DEPRECATED: This script was designed for the old brew.sh array format.
+# With the migration to Brewfile, use these brew bundle commands instead:
+#
+#   brew bundle check --file=Brewfile     # Check what's missing
+#   brew bundle cleanup --file=Brewfile   # Find packages not in Brewfile
+#   brew bundle dump --file=Brewfile      # Generate Brewfile from system
+#   brew bundle install --file=Brewfile   # Install everything in Brewfile
+#
+# This script may be updated or removed in a future version.
+############################
+
+############################
 # audit_apps.sh
 #
 # Purpose:

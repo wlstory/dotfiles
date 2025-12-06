@@ -33,41 +33,25 @@ brew upgrade
 brew upgrade --cask
 brew cleanup
 
-# Define an array of packages to install using Homebrew.
-packages=(
-    "python"
-    "bash"
-    "zsh"
-    "git"
-    "tree"
-    "pylint"
-    "eslint"
-    "node"
-    "postgresql"
-    "mas"
-    "gh"
-    "ruby-install"
-    "chruby"
-    "starship"
-    "obsidian"
-    "grammarly-desktop"
-    "bruno"
-    "little-snitch"
-    "dockutil"
+# =============================================================================
+# Install packages from Brewfile
+# =============================================================================
+# The Brewfile contains all formulae, casks, fonts, and Mac App Store apps
+# Edit Brewfile to add/remove packages, then re-run this script or:
+#   brew bundle install --file=Brewfile
+# To see what would be installed: brew bundle check --file=Brewfile
+# To remove packages not in Brewfile: brew bundle cleanup --file=Brewfile
 
-)
+BREWFILE_PATH="${HOME}/dotfiles/Brewfile"
 
-echo "🍺 Installing Homebrew Packages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-# Loop over the array to install each application.
-for package in "${packages[@]}"; do
-    if brew list --formula | grep -q "^$package\$"; then
-        echo "✅ $package is already installed. Skipping..."
-    else
-        echo "Installing $package..."
-        brew install "$package"
-    fi
-done
-echo ">>>>>>>>>>>>>>>>>>>---- Homebrew Packages Completed"
+if [[ -f "$BREWFILE_PATH" ]]; then
+    echo "🍺 Installing packages from Brewfile ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+    brew bundle install --file="$BREWFILE_PATH" --verbose
+    echo ">>>>>>>>>>>>>>>>>>>---- Brewfile installation complete"
+else
+    echo "ERROR: Brewfile not found at $BREWFILE_PATH"
+    exit 1
+fi
 
 # Add the Homebrew zsh to allowed shells
 echo "Changing default shell to Homebrew zsh"
@@ -89,99 +73,6 @@ $(brew --prefix)/bin/git config --global user.email "$git_user_email"
 
 # Install Prettier - used in both VS Code and Sublime Text
 $(brew --prefix)/bin/npm install --global prettier
-
-# Define an array of applications to install using Homebrew Cask.
-apps=(
-    "google-chrome"
-    "microsoft-edge"
-    "firefox"
-    "duckduckgo"
-    "1password"
-    "1password-cli"
-    "visual-studio-code"
-    "spotify"
-    "box-drive"
-    "google-drive"
-    "dropbox"
-    "gimp"
-    "microsoft-teams"
-    "microsoft-office"
-    "adobe-acrobat-reader"
-    "github"
-    "logi-options-plus"
-    "sonos"
-    "nordvpn"
-    "elgato-stream-deck"
-    "engine-dj"
-    "chatgpt"
-    "claude"
-    "zoom"
-    "warp"
-    "craft"
-    "beekeeper-studio"
-    "ableton-live-lite"
-    "zed"
-    "readdle-spark"
-    "windsurf"
-    "capacities"
-    "linear-linear"
-    "iterm2"
-    "slack"
-    "tailscale"
-    "replit"
-)
-
-# Loop over the array to install each application.
-for app in "${apps[@]}"; do
-    if brew list --cask | grep -q "^$app\$"; then
-        echo "✅ $app is already installed. Skipping..."
-    else
-        echo "Installing $app..."
-        brew install --cask "$app"
-    fi
-done
-
-# Install Fonts
-# Note: homebrew/cask-fonts tap was deprecated March 2024 and merged into homebrew/cask
-# Fonts now install directly without needing to tap
-fonts=(
-    "font-jetbrains-mono"
-    "font-fira-code"
-    "font-source-code-pro"
-)
-
-for font in "${fonts[@]}"; do
-    if brew list --cask | grep -q "^$font\$"; then
-        echo "✅ $font is already installed. Skipping..."
-    else
-        echo "Installing $font..."
-        brew install --cask "$font"
-    fi
-done
-
-
-# Define array for Apple Store Installs
-app_store=(
-    "302584613" # Amazon Kindle Reader
-    "1462114288" # Grammarly Safari
-    "497799835" # Xcode
-    "545519333" # Amazon Prime Video
-    "441258766" # Magnet
-)
-
-# Mac App Store Installs
-echo "Installing Mac App Store apps ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-# Loop over the array to install each application from Apple Store.
-for app in "${app_store[@]}"; do
-    if mas list | grep -q "^$app\$"; then
-        echo "✅ $app is already installed. Skipping..."
-    else
-        echo "Installing $app..."
-        mas install "$app"
-    fi
- done
-
-echo ">>>>>>>>>>>>>>>>>>>---- Mac App Store apps installed"
 
 # Programming Languages
 echo ""
