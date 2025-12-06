@@ -11,20 +11,22 @@ tap "homebrew/bundle"
 # Formulae (CLI tools and libraries)
 # =============================================================================
 brew "bash"
-brew "chruby"
 brew "dockutil"
 brew "eslint"
 brew "gh"
 brew "git"
 brew "mas"
+brew "mise"                # Polyglot version manager (replaces chruby, nvm, pyenv)
 brew "node"
 brew "postgresql"
 brew "pylint"
 brew "python"
-brew "ruby-install"
 brew "starship"
 brew "tree"
 brew "zsh"
+
+# Note: chruby and ruby-install removed in favor of mise
+# mise manages Ruby, Node, Python, and other language versions uniformly
 
 # =============================================================================
 # Casks (GUI Applications)

@@ -114,17 +114,45 @@ configure_git
 # Install Prettier - used in both VS Code and Sublime Text
 $(brew --prefix)/bin/npm install --global prettier
 
-# Programming Languages
-echo ""
-echo "🧑‍💻 Installing Programming Languages ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+# =============================================================================
+# Programming Languages via mise
+# =============================================================================
+# mise is a polyglot version manager that handles Ruby, Node, Python, etc.
+# Documentation: https://mise.jdx.dev/
+#
+# Usage:
+#   mise use --global ruby@latest     # Install and set global Ruby
+#   mise use --global node@20         # Install and set global Node 20.x
+#   mise use --global python@3.12     # Install and set global Python
+#   mise list                         # Show installed versions
+#   mise current                      # Show active versions
 
-if [[ -d "$HOME/.rubies" ]]; then
-  echo "💎 Ruby already installed"
+echo ""
+echo "🧑‍💻 Configuring mise for language version management ----<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
+
+if command -v mise &>/dev/null; then
+    # Activate mise for this session
+    eval "$(mise activate zsh)"
+
+    # Install default language versions if not already installed
+    # Ruby
+    if ! mise list ruby 2>/dev/null | grep -q "ruby"; then
+        echo "💎 Installing Ruby via mise..."
+        mise use --global ruby@latest
+    else
+        echo "✅ Ruby already managed by mise"
+    fi
+
+    # Note: Node and Python are installed via Homebrew in Brewfile
+    # Uncomment below to manage them with mise instead for version flexibility:
+    # mise use --global node@20
+    # mise use --global python@3.12
+
+    echo ">>>>>>>>>>>>>>>>>>>---- mise configuration complete"
 else
-  ruby-install --update
-  ruby-install --cleanup ruby
+    echo "⚠️  mise not found - skipping language version setup"
+    echo "    Install mise via: brew install mise"
 fi
-echo ">>>>>>>>>>>>>>>>>>>---- Programming Languages installed."
 
 # Once font is installed, Import your Terminal Profile
 echo "Import your terminal settings..."

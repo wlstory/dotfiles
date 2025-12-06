@@ -9,6 +9,12 @@ for file in ~/.{aliases,private}; do
 done;
 unset file;
 
+# Initialize mise (polyglot version manager for Ruby, Node, Python, etc.)
+# Documentation: https://mise.jdx.dev/
+if command -v mise &>/dev/null; then
+    eval "$(mise activate zsh)"
+fi
+
 # Initialize Starship prompt (cross-shell, fast, customizable)
 # Config location: ~/.config/starship.toml
 # Documentation: https://starship.rs
